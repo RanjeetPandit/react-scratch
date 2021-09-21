@@ -1,14 +1,24 @@
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import React from 'react';
-import User from './pages/User';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Home from './pages/Home';
+import About from './pages/About';
+import Header from './pages/Header';
+import Footer from './pages/Footer';
 class App extends React.Component {
   render() {
     return (
-      <div className="container">
-        <User />
-      </div>
+      <React.Fragment>
+        <Header />
+        <Router>
+          <Switch>
+            <Route exact path="/about" component={About} />
+            <Route path="/" component={Home} />
+            <Route component={Home} />
+          </Switch>
+        </Router>
+        <Footer/>
+      </React.Fragment>
+
     );
   }
 }
